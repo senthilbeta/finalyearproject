@@ -1,5 +1,8 @@
 
 <?php session_start();
+if(empty($_SESSION['password'])):
+    header('Location:alogin.php');
+endif;
 ?>
 
 <!DOCTYPE html>
@@ -12,10 +15,15 @@
 
     <style>
     body{
-      background-color: #97FEED;
+      background-color:  #071952;
       
     }
       /*-------------------attendance-report---------------------------*/
+      #bca-attendancereport{
+        background-color:white;
+        margin:10px;
+        border-radius:10px;
+      }
       .bca1{
             background-color: #0B666A;
             color: white;
@@ -30,9 +38,8 @@
       .bca2{
         height: 87vh;
         /* background-color: #35A29F; */
-
-   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-        margin: 12px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        margin: 15px 0px;
         border-radius: 8px;
         overflow: scroll;
 
@@ -42,7 +49,7 @@
         border-collapse: collapse;
         background-color: white;
         margin: 15px;
-        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
       }
       .bca2 th{
         font-weight: bolder;
@@ -58,20 +65,21 @@
       .form-control{
   position:absolute;
  margin-left:40%;
- margin-top:-48px;
+ margin-top:-43px;
  padding:10px;
  width:300px;
- background-color: white;
+ background-color:#1f1f1f;
+
  outline:none;
  border:none;
  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
  border-radius:20px;
- color:black;
+ color:white;
  }
  .form-control:focus{
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    background-color:#1f1f1f;
     border-radius:50px;
+    background-color: #071952;
  
  color:white;
  }
@@ -81,7 +89,7 @@ width:39px;
 border-radius:50px;
 position:absolute;
 margin-left:61%;
- margin-top:-49px;
+ margin-top:-44px;
 
 
  }
@@ -92,22 +100,20 @@ margin-left:61%;
 
   text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px white;
  }
- .bca-back-button{
- position:absolute;
- margin-left:80%;
- margin-top:-50px;
- padding:8px 30px;
- background-color:#071952;
- color:white;
- text-decoration:none;
- border-radius:10px;
+
  
- }
- .bca-back-button:hover,.bca-back-button:focus{
- box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
- background-color:white;
- color:#071952;
- }
+
+ #cimg{
+        width:47px;
+        height:47px;
+        border-radius:25px;
+        margin-left:5px;
+        margin-top:18px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        position:absolute;
+        margin-left:86%;
+        margin-top:-55px;
+      }
       </style>
     </head>
 
@@ -116,7 +122,7 @@ margin-left:61%;
                     <div class="bca1">
                         <h4>Attendance List</h4>
                         <input type="text" class="form-control" id="live_search1" autocomplete="off" placeholder="search....."><img src="searchicon.png" class="search-img">
-                        <a class="bca-back-button" href="admin.php#bca-attendancereport">back</a>
+                        <a class="bca-back-button" href="admin.php#bca-attendancereport"><img  id="cimg" src="cancal.jpg"></a>
                     </div>
                     <div class="bca2" id="bbca">
   			             <table id="table1">

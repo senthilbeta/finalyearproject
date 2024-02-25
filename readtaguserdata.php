@@ -13,6 +13,7 @@
 			   $name = $result['name'];
 			   $id = $result['id'];
 			   $rollno = $result['rollno'];
+			   $department = $result['department'];
 			   $email = $result['email'];
 			   $gender = $result['gender'];
                $image = $result['image'];
@@ -32,15 +33,17 @@
 				   $rollno= $result['rollno'] = "---------------";
 				   $email =$result['email'] = "----------------";
 				   $gender=$result['gender'] = "---------------";
+				   $department =$result['department'] = "----------------";
+
 			   }
          
 		 else{
 				   $msg = null;
 
-             if($id == 'C03779A6' || $id =='0AED1DD9')
+             if($id =='C03779A6' || $id =='0AED1DD9' || $id =='B06BE4A4' || $id =='E0E1D7A3' || $id =='A045E5A4' || $id == 'D37ADD02' || $id == '8360EF02')
              {
                    
-                
+                // if($department == 'bca'){
                         $date = date("Y-m-d");
                         $sql1 = "SELECT * FROM attendance where rollno = '$rollno' and date = '$date'";
                         $query1 = mysqli_query($connec, $sql1);
@@ -49,21 +52,21 @@
                         $period2 = 'absent';
                         $period3 = 'absent';
                         $period4 = 'absent';
-                        $period5 = 'absent';
+                        $period5 = 'absent';    
                         
                         // echo $num1;
-                        if($num1 == 0){
+                        // if($num1 == 0){
                           
-                            $insertQuery = "INSERT INTO attendance(name, rfidno, rollno, date, period1, period2, period3, period4, period5) 
-                                            VALUES('$name','$id','$rollno','$date', '$period1', '$period2', '$period3', '$period4', '$period5')";
-                            $result = $connec->query($insertQuery);
+                        //     $insertQuery = "INSERT INTO attendance(name, rfidno, rollno, date, period1, period2, period3, period4, period5) 
+                        //                     VALUES('$name','$id','$rollno','$date', '$period1', '$period2', '$period3', '$period4', '$period5')";
+                        //     $result = $connec->query($insertQuery);
                     
-                            if ($result == TRUE) {
-                                $insert_attendance = "Attendance details inserted for $date.<br>";
-                            } else {
-                                // echo "Error inserting attendance details: " . $connec->error . "<br>";
-                            }
-                        }
+                        //     if ($result == TRUE) {
+                        //         $insert_attendance = "Attendance details inserted for $date.<br>";
+                        //     } else {
+                        //         // echo "Error inserting attendance details: " . $connec->error . "<br>";
+                        //     }
+                        // }
 
                         date_default_timezone_set('Asia/Kolkata');
                         $currenttime = date('h:i', time());
@@ -78,7 +81,12 @@
                         $one6 = '4:00';
                         
                         
-                        
+                        // $present = '';
+                        // $persentToday = (int)$present;
+                        // if($currenttime == '5:00')
+                        // {
+
+                        // } 
                         if (strtotime($currenttime) >= strtotime($one) && strtotime($currenttime) < strtotime($one1)) {
                             // echo strtotime($one);
                             $period1 = 'present';
@@ -105,6 +113,8 @@
                             // echo strtotime($one);
                             $period1 = 'present';
                             // echo $period1;
+                            // $present = $present + 0.2;
+
                         
                             $update = "UPDATE attendance SET period2 = '$period1' WHERE rollno='$rollno' AND date='$date'";
                             
@@ -131,7 +141,8 @@
                             // echo strtotime($one);
                             $period1 = 'present';
                             // echo $period1;
-                        
+                            // $present = $present + 0.2;
+                            
                             $update = "UPDATE attendance SET period3 = '$period1' WHERE rollno='$rollno' AND date='$date'";
                             
                             $data = mysqli_query($connec, $update);
@@ -152,6 +163,8 @@
                             // echo strtotime($one);
                             $period1 = 'present';
                             // echo $period1;
+                            // $present = $present + 0.2;
+
                         
                             $update = "UPDATE attendance SET period4 = '$period1' WHERE rollno='$rollno' AND date='$date'";
                             
@@ -173,6 +186,8 @@
                             // echo strtotime($one);
                             $period1 = 'present';
                             // echo $period1;
+                            // $present = $present + 0.2;
+
                         
                             $update = "UPDATE attendance SET period5 = '$period1' WHERE rollno='$rollno' AND date='$date'";
                             
@@ -191,6 +206,10 @@
                         // }
                        
                     }
+                // }else{
+                //     $attendance = "not a bca department";
+
+                // }
 			 }
 
     //          $date = date("y-m-d");
@@ -395,6 +414,7 @@
                                 <td style="font-weight:bold">:</td>
                                 <td style="text-align:left;"><?php echo $rollno; ?></td>
                             </tr>
+                          
                             <tr>
                                 <td style="font-weight:bold; text-align:center; width:100px;" class="lf">EMAIL</td>
                                 <td style="font-weight:bold">:</td>
@@ -404,6 +424,11 @@
                                 <td style="font-weight:bold; text-align:center; width:100px;" class="lf">GENDER</td>
                                 <td style="font-weight:bold">:</td>
                                 <td style="text-align:left;"><?php echo $gender; ?></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold; text-align:center; width:100px;" class="lf">DEPARTMENT</td>
+                                <td style="font-weight:bold">:</td>
+                                <td style="text-align:left;"><?php echo $department; ?></td>
                             </tr>
                         </table>
                     </td>

@@ -1,8 +1,13 @@
+<?php session_start();
+if(empty($_SESSION['password'])):
+    header('Location:alogin.php');
+endif;
+?>
 <?php
-session_start();
+
 
 include 'dbconnection.php';
-
+$dep = $_GET['dep'];
 $message = "";
 if (isset($_FILES["my_image"]) && !empty($_FILES["my_image"]["name"])) {
     $allowedTypes = ["jpg", "png", "jpeg"];
@@ -20,9 +25,10 @@ if (isset($_FILES["my_image"]) && !empty($_FILES["my_image"]["name"])) {
 
             // Sanitize the input (you should use proper sanitation methods, e.g., prepared statements)
             $rn = mysqli_real_escape_string($connec, $rn);
-
+        
             $sql = "UPDATE student SET image = '{$filename}' WHERE rollno = '{$rn}'";
 
+         
             // Execute the SQL query
             if (mysqli_query($connec, $sql)) {
                 $message = "Image uploaded successfully.";
@@ -47,16 +53,16 @@ if (isset($_FILES["my_image"]) && !empty($_FILES["my_image"]["name"])) {
 
     <style>
     body{
-      background-color: #071952;;
+      background-color: #071952;
     }
       /*-------------------attendance-report---------------------------*/
       .bca1{
-            background-color: #0B666A;
-            color: white;
+            background-color:white;
+            color: #071952;
             width: 200px;
             margin: 10px;
             border-radius: 5px;
-            border-left: 5px solid red;
+            border-left: 7px solid red;
             text-align: center;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         }
@@ -144,7 +150,7 @@ margin:left;
  }
  .details-uplode{
  background-color:white;
- height:500px;
+ height:480px;
  margin:20px;
  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
  border-radius:8px;
@@ -189,7 +195,8 @@ margin:left;
         width:47px;
         height:47px;
         border-radius:25px;
-        margin-left:30px;
+        margin-left:38px;
+        margin-top:38px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
    </style>
@@ -216,6 +223,8 @@ margin:left;
   			$ps = $_GET['ps'];
   			$gn = $_GET['gn'];
   			$im = $_GET['im'];
+  			$dep = $_GET['dep'];
+
 			?>
 			<div class="image-uplode">
 				<div class="img-st">

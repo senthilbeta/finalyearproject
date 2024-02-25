@@ -1,6 +1,7 @@
 <?php session_start();
-
- 
+if(empty($_SESSION['password'])):
+    header('Location:alogin.php');
+endif;
 ?>
 
 <!DOCTYPE html>
@@ -49,44 +50,57 @@
   padding: 16px;
   /* text-align: center; */
   background-color:white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   /* width:700px; */
   height:500px;
-  margin:10px;
+  /* margin-top:-40px; */
+  margin:0px 18px;
   /* margin-left:350px;
   margin-top:50px; */
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
+  /* background-image:url(bca.webp); */
+  background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(bca.webp);
+
+  background-repeat:no-repeat;
+  background-size:cover;
 }
-.bca, .mca, .bsc-cs, .bba, .bcom, .chemistry{
+.bca{
            background-color: white;
-           margin-left: 300px;
-           margin-top:50px;
-           width:750px;
+           margin-left: 370px;
+           margin-top:70px;
+           opacity:0.9;
+           /* position:absolute; */
+           width:600px;
            height: 50vh;
            padding: 15px;
            border-radius: 10px;
-           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+           box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         } 
 
-        .bca a{
-          margin-top: 40px;
-          margin-left: 25px;    
+        .bca button{
+          margin-top:80px;
+          position:absolute;
+          margin-left: 420px;    
           padding: 10px 40px;
-          width: 140px;
+          width: 170px;
           border-radius: 15px;
-          color: #97FEED;
+          color: white;
           font-size: 20px;
           font-weight: bolder;
           border: none;
           outline: none;
           background-color: #071952;
           text-decoration: none;
+          cursor:pointer;
+          transition:0.3s;
 
 
         }
-        .bca a:hover{
+        .bca button:hover{
    	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
    	color:white;
+    background-color:#f44336;
         }
        
 
@@ -136,7 +150,7 @@ hr {
         width:47px;
         height:47px;
         border-radius:25px;
-        margin-top:28px;
+        margin-top:15px;
         margin-left:-2px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
@@ -153,6 +167,38 @@ hr {
   clear: both;
   display: table;
 }
+#year{
+  padding:10px 60px;
+  margin:10px 30px;
+  width:200px;
+  color: white;
+  background-color: #071952;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#section{
+  padding:10px 80px;
+  width:200px;
+  margin:10px 60px;
+  color: white;
+  background-color: #071952;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+#goimg{
+  width:40px;
+  padding:10px;
+  position:absolute;
+  height:40px;
+  margin-top:-17px;
+  margin-left:15px;
+}
 
 @media screen and (max-width: 300px) {
   .cancelbtn, .deletebtn {
@@ -168,8 +214,24 @@ hr {
 	<a href="admin.php#attendance"><span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal"><img  id="cimg" src="cancal.jpg"></span></a>
                  <div class="container">
                       <div class="bca">
-                      <h3 style="margin-left: 10px;">DEPARTMENT OF BCA</h3><br>
-                            <a href="#" id="report1" >BCA</a> 
+                      <h1 style="text-align:center;">DEPARTMENT OF BCA</h1><br>
+                      <form action="bcaclassprocess.php" method="post">
+                      <select id="year" name="year">
+                                            <option value="first">1 Years</option>
+                                            <option value="secont">2 Years</option>
+                                            <option value="third">3 Years</option>
+                                           
+                                        </select>
+
+                                        <select id="section" name="section">
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                           
+                                        </select><br>
+
+                            <button id="report1" name="go">Go<img src="go2.png" id="goimg"></button>
+                      </form>
+
                       </div>
                      
 

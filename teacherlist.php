@@ -1,5 +1,7 @@
 <?php session_start();
-
+if(empty($_SESSION['password'])):
+    header('Location:alogin.php');
+endif;
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +52,7 @@
   background-color:white;
   /* width:700px; */
   height:500px;
-  margin:10px;
+  margin:15px;
   /* margin-left:350px;
   margin-top:50px; */
   display:grid;
@@ -234,7 +236,8 @@ hr {
         width:47px;
         height:47px;
         border-radius:25px;
-        /* margin-left:10px; */
+        margin-left:5px;
+        margin-top:18px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
  

@@ -1,3 +1,8 @@
+<?php session_start();
+if(empty($_SESSION['password'])):
+    header('Location:alogin.php');
+endif;
+?>
 <?php
     include 'dbconnection.php';
 	$id = null;
@@ -26,15 +31,15 @@
     <meta charset="utf-8">
     <style>
            .resentview{
-             width:750px;
+             width:760px;
         height:155px;
-         margin-left:20px; 
+         margin-left:10px; 
          /* margin:5px 20px;  */
         background-color:white;
         display:grid;
         grid-template-columns:1fr 1fr 1fr 2fr;
 
-    }
+    } 
     #recentimg{
         margin-top:15px;
         margin-left:10px;

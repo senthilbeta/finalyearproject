@@ -8,6 +8,233 @@ endif;
 	$Write="<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
 	file_put_contents('uidcontainer.php',$Write);
 ?>
+<?php
+ include 'dbconnection.php';
+
+$date = date("y-m-d");
+   $sqlDate = "SELECT * FROM attendance WHERE date = '$date'";
+   $query = mysqli_query($connec,$sqlDate);
+   $num = mysqli_num_rows($query);
+//    echo $num;
+// $attendanceSelect = "SELECT * FROM attendance ORDER BY name ASC";
+// $query1 = mysqli_query($connec,$attendanceSelect);
+// $numAttendance = mysqli_num_rows($query1);
+// if($numAttendance>0){
+//     while($result=mysqli_fetch_assoc($query1)){
+               
+             
+//              $rollno = $result['rollno'];
+//              $nameAttendance = $result['name'];
+//              $id = $result['id'];
+//     }
+// }
+
+// $studentSelect = "SELECT * FROM student ORDER BY name ASC";
+// $query2 = mysqli_query($connec,$studentSelect);
+// $numStudent = mysqli_num_rows($query2);
+// if($numStudent>0){
+//     while($result=mysqli_fetch_assoc($query2)){
+               
+             
+//              $rollno = $result['rollno'];
+//              $nameAttendance = $result['name'];
+//              $id = $result['id'];
+//     }
+// }
+
+   if($num == 0) {
+    $sqlSelect = "SELECT * FROM student ORDER BY name ASC";
+    $query = mysqli_query($connec,$sqlSelect);
+    $num = mysqli_num_rows($query);
+    if($num>0){
+       $date = date("y-m-d");
+       $period1 = 'absent';
+      $period2 = 'absent';
+      $period3 = 'absent';
+      $period4 = 'absent';
+      $period5 = 'absent';
+      $status = 0.0;
+       while($result=mysqli_fetch_assoc($query)){
+                  
+                
+                $rollno = $result['rollno'];
+                $name = $result['name'];
+                $id = $result['id'];
+               
+                   $insertQuery1 = "INSERT INTO attendance(name, rfidno, rollno, date, period1, period2, period3, period4, period5, status) 
+                                   VALUES('$name','$id','$rollno','$date', '$period1', '$period2', '$period3', '$period4', '$period5', '$status')";
+                   $result1 = $connec->query($insertQuery1);
+           
+                   if ($result1 == TRUE) {
+                       $insert_attendance = "Attendance details inserted for $date.<br>";
+                   } else {
+                       // echo "Error inserting attendance details: " . $connec->error . "<br>";
+                   }
+                }
+                 
+}
+}
+// elseif($num>0)
+// {
+//     $sqlSelect = "SELECT * FROM student ORDER BY name ASC";
+//     $query = mysqli_query($connec,$sqlSelect);
+//     $num = mysqli_num_rows($query);
+//     if($num>0){
+//        $date = date("y-m-d");
+//        $period1 = 'absent';
+//       $period2 = 'absent';
+//       $period3 = 'absent';
+//       $period4 = 'absent';
+//       $period5 = 'absent';
+//       $status = 0.0;
+//        while($result=mysqli_fetch_assoc($query)){
+                  
+                
+//                 $rollno = $result['rollno'];
+//                 $name = $result['name'];
+//                 $id = $result['id'];
+//                if($name == 0)
+//                    $insertQuery1 = "INSERT INTO attendance(name, rfidno, rollno, date, period1, period2, period3, period4, period5, status) 
+//                                    VALUES('$name','$id','$rollno','$date', '$period1', '$period2', '$period3', '$period4', '$period5', '$status')";
+//                    $result1 = $connec->query($insertQuery1);
+           
+//                    if ($result1 == TRUE) {
+//                        $insert_attendance = "Attendance details inserted for $date.<br>";
+//                    } else {
+//                        // echo "Error inserting attendance details: " . $connec->error . "<br>";
+//                    }
+//                 }
+                 
+// }
+// }
+?> 
+<?php
+include 'dbconnection.php';
+$date = date("y-m-d");
+   $sqlDate = "SELECT * FROM attendance WHERE date = '$date'";
+    $query = mysqli_query($connec,$sqlDate);
+   $num = mysqli_num_rows($query);
+//    echo $num;
+   if($num > 0) {
+       while($result=mysqli_fetch_assoc($query)){
+                  
+                
+                $rollno = $result['rollno'];
+                $name = $result['name'];
+                $id = $result['id'];
+                $period1 = $result['period1'];
+                $period2 = $result['period2'];
+                $period3 = $result['period3'];
+                $period4 = $result['period4'];
+                $period5 = $result['period5'];
+                $presentStatus = array($period1,$period2,$period3,$period4,$period5);
+                $count =0;
+                for($i=0;$i<5;$i++)
+                {
+                    if($presentStatus[$i] == 'present'){
+                        $count++;
+                    }
+                }
+                if($count == 5)
+                {
+                   
+                    $update = "UPDATE attendance SET status = 1 WHERE rollno='$rollno' AND date='$date'";
+                            
+                    $data = mysqli_query($connec, $update);
+                    
+                    if ($data) {
+                        // $attendance = "Attendance inserted for First hour $date.<br>";
+                        
+                    } else {
+                        // $attendance = "Attendance inserted error for $date.<br>";
+                    }
+                }
+                elseif($count == 4)
+                {
+                    
+
+                    $update = "UPDATE attendance SET status = 0.8 WHERE rollno='$rollno' AND date='$date'";
+                            
+                    $data = mysqli_query($connec, $update);
+                    
+                    if ($data) {
+                        // $attendance = "Attendance inserted for First hour $date.<br>";
+                        
+                    } else {
+                        // $attendance = "Attendance inserted error for $date.<br>";
+                    }
+                }
+                elseif($count == 3)
+                {
+                    
+
+                    $update = "UPDATE attendance SET status = 0.6 WHERE rollno='$rollno' AND date='$date'";
+                            
+                    $data = mysqli_query($connec, $update);
+                    
+                    if ($data) {
+                        // $attendance = "Attendance inserted for First hour $date.<br>";
+                        
+                    } else {
+                        // $attendance = "Attendance inserted error for $date.<br>";
+                    }
+                }
+                elseif($count == 2)
+                {
+                   
+
+                    $update = "UPDATE attendance SET status = 0.4 WHERE rollno='$rollno' AND date='$date'";
+                            
+                    $data = mysqli_query($connec, $update);
+                    
+                    if ($data) {
+                        // $attendance = "Attendance inserted for First hour $date.<br>";
+                        
+                    } else {
+                        // $attendance = "Attendance inserted error for $date.<br>";
+                    }
+                }
+                elseif($count == 1)
+                {
+                    $update = "UPDATE attendance SET status = 0.2 WHERE rollno='$rollno' AND date='$date'";
+                            
+                    $data = mysqli_query($connec, $update);
+                    
+                    if ($data) {
+                        // $attendance = "Attendance inserted for First hour $date.<br>";
+                        
+                    } else {
+                        // $attendance = "Attendance inserted error for $date.<br>";
+                    }
+                }
+                else
+                {
+                    $update = "UPDATE attendance SET status = 0 WHERE rollno='$rollno' AND date='$date'";
+                            
+                    $data = mysqli_query($connec, $update);
+                    
+                    if ($data) {
+                        // $attendance = "Attendance inserted for First hour $date.<br>";
+                        
+                    } else {
+                        // $attendance = "Attendance inserted error for $date.<br>";
+                    }
+                }
+             
+                //    $insertQuery1 = "INSERT INTO attendance(name, rfidno, rollno, date, period1, period2, period3, period4, period5, status) 
+                //                    VALUES('$name','$id','$rollno','$date', '$period1', '$period2', '$period3', '$period4', '$period5', '$status')";
+                //    $result1 = $connec->query($insertQuery1);
+           
+                //    if ($result1 == TRUE) {
+                //        $insert_attendance = "Attendance details inserted for $date.<br>";
+                //    } else {
+                //        // echo "Error inserting attendance details: " . $connec->error . "<br>";
+                //    }
+                }
+                 
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -25,7 +252,7 @@ endif;
             font-family: serif;
         }
         body{
-            background-color: #97FEED;
+            /* background-color: #97FEED; */
         }
         .body-container{
             display: grid;
@@ -113,17 +340,19 @@ endif;
 
         #dashboard1{
 
-            margin: 10px;
-            background-color: #0B666A;
-            color: white;  
-            width: 140px;      
-            border-left: 5px solid red;
+            margin: 8px;
+            background-color: #071952;
+            color:  white;
+            font-weight:bold;
+            padding:2px;
+            width: 150px;      
+            border-left: 7px solid red;
             border-radius: 5px;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         }
         .dashboard2{
 
-            /* background-color: #35A29F; */
+            background-color: white;
             height: 50vh;
             margin: 10px;
             border-radius: 8px;
@@ -145,10 +374,14 @@ endif;
         .present{
             height: 17vh;
             background-color: white;
-            color: #071952;
+            color: white;
             margin: 25px;
             border-radius: 10px;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            
+        background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(studentb.webp);
+
         }
         .absent{
             height: 17vh;
@@ -157,6 +390,8 @@ endif;
             margin: 25px;
             border-radius: 10px;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(presentb.jpg);
 
         }
         .hours{
@@ -166,17 +401,25 @@ endif;
             margin: 25px;
             border-radius: 10px;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(absentb.webp);
 
         }
            .present:hover{
            box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+           background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(studentb.webp);
+        background-size:cover;
+          
         }
          .absent:hover{
           box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+          background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(presentb.jpg);
+        background-size:cover;
         }
          .hours:hover{
           box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-           
+          background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(absentb.webp);
+        background-size:cover;
         }
         /*------------------------********************************-------------------------*/
 
@@ -188,12 +431,14 @@ endif;
             grid-template-rows: 1fr 2fr;
         }
         #department1{
-            background-color: #35A29F;
-            color: #F0F5F9;
+            background-color: #071952;
+            color:  white;
+            font-weight:bold;
+            padding:2px;
             width: 200px;
             margin: 10px;
             border-radius: 5px;
-            border-left: 5px solid red;
+            border-left: 7px solid red;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         }
         #departments3{
@@ -256,12 +501,14 @@ endif;
             grid-template-rows: 1fr 2fr;
         }
         #attendance1{
-            background-color: #0B666A;
-            color: white;
+            background-color: #071952;
+            color:  white;
+            font-weight:bold;
+            padding:2px;
             width: 200px;
             margin: 10px;
             border-radius: 5px;
-            border-left: 5px solid red;
+            border-left: 7px solid red;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         }
         #attendance2{
@@ -269,6 +516,11 @@ endif;
             margin: 10px;
             border-radius: 8px;
             color: #0B666A;
+            /* background-image:url(); */
+            background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(imgaj2.jpg);
+            background-size:cover;
+            /* opacity:0.9; */
+            height:75vh;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr; 
             box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -281,6 +533,7 @@ endif;
            padding: 15px;
            border-radius: 10px;
            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+           /* opacity:0.9; */
         } 
          #attendance-msc a{
           margin-top: 40px;
@@ -404,19 +657,27 @@ endif;
 
         }
         #self1{
-            /* height: 77vh;
-            background-color:  #35A29F; */
+            height: 74vh;
+            background-color:  #35A29F;
             margin: 10px;
             border-radius: 10px;
+            /* background-image:url(); */
+            background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(rfidtag.webp);
+            
+            /* opacity:0.9; */
+            background-size:cover;
+
         }
 
         #self2{
-            background-color: #0B666A;
-            color: white;
+            background-color: #071952;
+            color:  white;
+            font-weight:bold;
+            padding:2px;
             width: 200px;
             margin: 10px;
             border-radius: 5px;
-            border-left: 5px solid red;
+            border-left: 7px solid red;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
         }
@@ -449,13 +710,15 @@ endif;
             border-radius: 8px;
             overflow: hidden;
             width: 600px;
-            height:380px;
+            height:424px;
             text-align: center;
             padding: 18px;
             margin-left: 240px;
             margin-top: 25px;
             /* position: absolute; */
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+            opacity:0.8;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
         }
        .show-details1 .lable-1{
             /* padding:90px; */
@@ -511,12 +774,14 @@ endif;
         }
 
         #rigestration2{
-            background-color: #0B666A;
-            color: white;
+            background-color: #071952;
+            color:  white;
+            font-weight:bold;
+            padding:2px;
             width: 200px;
             margin: 10px;
             border-radius: 5px;
-            border-left: 5px solid red;
+            border-left: 7px solid red;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
         }
@@ -636,13 +901,18 @@ endif;
       
       }
       /*-------------------attendance-report---------------------------*/
+      #bca-attendancereport{
+      
+      }
       .bca1{
-            background-color: #0B666A;
-            color: white;
-            width: 200px;
+        background-color: #071952;
+            color:  white;
+            font-weight:bold;
+            padding:2px;
+            width: 250px;
             margin: 10px;
             border-radius: 5px;
-            border-left: 5px solid red;
+            border-left: 7px solid red;
             text-align: center;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         }
@@ -654,11 +924,13 @@ endif;
         border-radius: 8px;
         overflow: scroll;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-      }
+        
+    }
       /*------------------signup details---------------------------*/
       .signup-container {
             background-color: white;
-         
+            /* transition:0.3s;
+            opacity:0.7; */
             border-radius: 8px;
             overflow: hidden;
             /* width: 95%; */
@@ -667,13 +939,15 @@ endif;
             padding: 20px;
             margin:20px 10px;
             margin-top: 30px;
+            background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(registerb.png);
+        background-size:cover;
             /* transform: translateY(20px); */
             /* position: absolute; */
             box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
 
         .signup-container h2 {
-            color: #071952;
+            color: white;
             margin-bottom: 20px;
         }
 
@@ -688,6 +962,22 @@ endif;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
    
 
+        }
+        #gender{
+            padding: 15px 202px;
+            margin-bottom: 15px;
+            border: 1px solid #071952;
+            border-radius: 4px;
+            box-sizing: border-box;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        #dep{
+            padding: 15px 190px;
+            margin-bottom: 15px;
+            border: 1px solid #071952;
+            border-radius: 4px;
+            box-sizing: border-box;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
         .getid{
             
@@ -715,7 +1005,7 @@ endif;
         }
 
         .signup-form .reg-submit{
-            width: 100%;
+            width:48%;
             padding: 15px;
             background-color: #071952;
             color: #fff;
@@ -723,15 +1013,17 @@ endif;
             border-radius: 4px;
             cursor: pointer;
             font-weight:bold;
-            opacity: 0.7;
+            opacity:1;
+
             transition:0.3s;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 
 
         }
         .signup-form .reg-submit:hover{
-            opacity:1;
             box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+            opacity: 0.7;
+
 
 
         }
@@ -741,13 +1033,17 @@ endif;
 
         }
         .reg-reset{
-            padding: 15px 215px;
+            width:45%;
+            padding: 15px;
+
             background-color:red;
             cursor: pointer;
             border:none;
             font-weight:bold;
             color: #fff;
-            opacity: 0.7;
+            opacity:0.7;
+   
+           
       transition:0.3s;
 
 
@@ -933,10 +1229,13 @@ display:inline-block;
 
  .find-student-detail{
     background-color:white;
-    margin:30px 50px;
-    width: 90%;
-    height:65vh;
+    /* margin:30px 20px; */
+    /* margin:10px; */
+    width: 100%;
+    height:75vh;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(areport.png);
+        background-size:cover;
  }
 
   .find-student-detail input{
@@ -956,37 +1255,46 @@ display:inline-block;
     
      .find-student-detail .reset{
       padding:15px 100px;
-      margin:13px;
+      margin-left:106px;
       background-color: red;
       border:none;
       color:white;
       font-weight:bold;
       cursor: pointer;
-      opacity: 0.7;
       transition:0.3s;
+      opacity: 1;
+
      } 
      .find-student-detail .reset:hover{
-        opacity: 1;
+      opacity: 0.7;
+
         box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 
 
      }
+     .find1{
+        /* margin-left:30px; */
+        transform:translateX(15px);
+        /* position:absolute; */
+     }
  .find-student-detail .button{
-      padding:15px 300px;
-      margin:13px;
+      padding:15px 280px;
+      /* margin:13px 30px; */
+      margin-left:55px;
       background-color:#071952;
       border:none;
       color:white;
       font-weight:bold;
       cursor: pointer;
-      opacity: 0.7;
+      opacity: 1;
+
       transition:0.3s;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 
      } 
      .find-student-detail .button:hover{
-        opacity: 1;
         box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        opacity: 0.7;
         
 
      }
@@ -1053,13 +1361,20 @@ display:inline-block;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         display:grid;
         grid-template-columns:1fr 1fr;
+        background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(imgaj2.jpg);
+        background-size:cover;
+        /* opacity:0.9; */
+
     }
     .departments:hover{
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         /* padding:1px; */
         border-radius:5px;
-        background-color:#071952;
+        /* background-color:#071952; */
         color:white;
+        /* background-image:url(imgaj2.jpg); */
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(imgaj2.jpg);
+
     }
     .male{ 
         /* width:220px;
@@ -1069,11 +1384,18 @@ display:inline-block;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         display:grid;
         grid-template-columns:1fr 1fr;
+        background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(maleb.jpg);
+
+        background-size:cover;
+
     }
     .male:hover{
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         /* padding:1px; */
         border-radius:5px;
+        background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(maleb.jpg);
+
     }
 
     .female{
@@ -1084,11 +1406,21 @@ display:inline-block;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         display:grid;
         grid-template-columns:1fr 1fr;
+        /* background-image:url(femalb.jpg); */
+        background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(femalb.jpg);
+        background-size:cover;
+        /* opacity:0.8; */
+
     }
     .female:hover{
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         /* padding:1px; */
         border-radius:5px;
+        /* background-image:url(femalb.jpg); */
+        color:white;
+        background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(femalb.jpg);
+
     }
     .staff{
         /* width:220px;
@@ -1098,11 +1430,16 @@ display:inline-block;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
         display:grid;
         grid-template-columns:1fr 1fr;
+        background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(teacherb.jpg);
+        background-size:cover;
     }
     .staff:hover{
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         /* padding:1px; */
         border-radius:5px;
+        background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(teacherb.jpg);
+
     }
     .depimg{
         width:65px;
@@ -1122,6 +1459,8 @@ display:inline-block;
         background-color:white;
         display:grid;
         grid-template-columns:1fr 1fr;
+        background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(staffb.jpg);
+        background-size:cover;
 
     }
     .teacher:hover{
@@ -1130,6 +1469,11 @@ display:inline-block;
         border-radius:5px;
         background-color:#071952;
         color:white;
+        /* opacity:0.9; */
+   
+        background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(staffb.jpg);
+
     }
     .resentview{
         width:756px;
@@ -1140,6 +1484,8 @@ display:inline-block;
         background-color:white;
         display:grid;
         grid-template-columns:1fr 1fr 1fr 1fr;
+        border-radius:10px;
+       
 
     }
     .recentimg{
@@ -1164,7 +1510,13 @@ display:inline-block;
         margin-left:-55px;
         margin-top:-10px;
     }
-
+    .rgicon{
+        width:40px;
+        height:40px;
+        margin:2px 10px; 
+        position:absolute;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    }
         /*------------------------********************************-------------------------*/
 
     </style>
@@ -1272,8 +1624,8 @@ display:inline-block;
                                     <img src="dep1.png" alt="" class="depimg">
                                 </div>
                                 <div class="departments2">
-                                    <h4 style="margin:10px 15px;">Departments</h4>
-                                    <h1 style="text-align:center;color:black;">6</h1>
+                                    <h4 style="margin:10px 15px;color:white;">Departments</h4>
+                                    <h1 style="text-align:center;color:white;">6</h1>
                                 </div>
 
 
@@ -1283,14 +1635,14 @@ display:inline-block;
                                 <img src="male.png" alt="" class="depimg">
                                 </div>
                                 <div class="male2">
-                                <h4 style="margin:10px 30px;color:red;">Male</h4>
+                                <h4 style="margin:10px 30px;color:white;">Male</h4>
                                 <?php
 				  require 'dbconnection.php';
 				  $query = "SELECT gender FROM student where gender='male'";
 				  $query_run = mysqli_query($connec, $query);
 				  $row = mysqli_num_rows($query_run);
 
-				  echo '<h1 style="text-align: center; color:black;">'.$row.'</h1>';
+				  echo '<h1 style="text-align: center; color:white;">'.$row.'</h1>';
 				?>
                                 </div>
                            
@@ -1301,14 +1653,14 @@ display:inline-block;
 
                                 </div>
                                 <div class="female2">
-                                <h4 style="margin:10px 15px;color:#e44b8d;">Female</h4>
+                                <h4 style="margin:10px 15px;color:white">Female</h4>
                                 <?php
 				  require 'dbconnection.php';
 				  $query = "SELECT gender FROM student where gender='female'";
 				  $query_run = mysqli_query($connec, $query);
 				  $row = mysqli_num_rows($query_run);
 
-				  echo '<h1 style="text-align: center; color:black;">'.$row.'</h1>';
+				  echo '<h1 style="text-align: center; color:white;">'.$row.'</h1>';
 				?>
                                 
                                 </div>
@@ -1319,14 +1671,14 @@ display:inline-block;
 
                                 </div>
                                 <div class="staff2">
-                                <h4 style="margin:10px 25px;color:#0B666A;">staff</h4>
+                                <h4 style="margin:10px 25px;color:white;">staff</h4>
                                 <?php
 				  require 'dbconnection.php';
 				  $query = "SELECT * FROM adminlogin";
 				  $query_run = mysqli_query($connec, $query);
 				  $row = mysqli_num_rows($query_run);
 
-				  echo '<h1 style="text-align: center; color:black;">'.$row.'</h1>';
+				  echo '<h1 style="text-align: center; color:white;">'.$row.'</h1>';
 				?>
                                    
                                 </div>
@@ -1342,8 +1694,8 @@ display:inline-block;
                                     <img src="teacher.png" alt="" class="depimg">
                                 </div>
                                 <div class="teacher2">
-                                    <h4 style="margin:10px 15px;">Total Teachers</h4>
-                                    <h1 style="text-align:center;color:black;">0</h1>
+                                    <h4 style="margin:10px 15px;color:white;">Total Teachers</h4>
+                                    <h1 style="text-align:center;color:white;">0</h1>
                                 </div>
 
                             </div></a>
@@ -1413,7 +1765,7 @@ display:inline-block;
                         <div class="present2">
 
                        
-                            <h3 style="text-align: center; margin:5px 0px;">TOTAL STUDENTS</h3>
+                            <h3 style="text-align: center; margin:5px 0px;color:white;">TOTAL STUDENTS</h3>
 
 				<?php
 				  require 'dbconnection.php';
@@ -1421,7 +1773,7 @@ display:inline-block;
 				  $query_run = mysqli_query($connec, $query);
 				  $tstudent = mysqli_num_rows($query_run);
 
-				  echo '<h1 style="text-align: center; color:black;">'.$tstudent.'</h1>';
+				  echo '<h1 style="text-align: center; color:white;">'.$tstudent.'</h1>';
 				?>
                  </div>
                            </div>
@@ -1434,15 +1786,15 @@ display:inline-block;
                         <div class="absent2">
 
                        
-                            <h3 style="text-align: center;  margin:10px 2px;">PRESENT TODAY</h3>
+                            <h3 style="text-align: center;  margin:10px 2px;color:white;">PRESENT TODAY</h3>
                             <?php
 				  require 'dbconnection.php';
                   $date = date("Y-m-d");
-				  $query = "SELECT date FROM attendance where date='$date'";
+				  $query = "SELECT * FROM attendance where date='$date' and status > 0";
 				  $query_run = mysqli_query($connec, $query);
 				  $present = mysqli_num_rows($query_run);
 
-				  echo '<h1 style="text-align: center; color:black;">'.$present.'</h1>';
+				  echo '<h1 style="text-align: center; color:white;">'.$present.'</h1>';
 				?>
                             </div>
                            
@@ -1453,14 +1805,14 @@ display:inline-block;
 
                         </div>
                         <div class="hours2">
-                        <h3 style="text-align: center; margin:10px 4px;">ABSENT TODAY </h3>    
+                        <h3 style="text-align: center; margin:10px 4px;color:white;">ABSENT TODAY </h3>    
                         <?php
 				  require 'dbconnection.php';
 				  $query = "SELECT * FROM student";
 				  $query_run = mysqli_query($connec, $query);
 				  $student = mysqli_num_rows($query_run);
                   $absent = $student - $present;
-				  echo '<h1 style="text-align: center; color:black;">'.$absent.'</h1>';
+				  echo '<h1 style="text-align: center; color:white;">'.$absent.'</h1>';
 				?>
                        
                         </div>
@@ -1507,23 +1859,23 @@ display:inline-block;
                         </div>
                         <div id="attendance-mca">
                             <h3 style="margin-left: 10px;">DEPARTMENT OF MCA</h3><br><br>
-                            <a href="#mca-attendancerport" id="report1" >MCA</a>
+                            <a href="mcaclass.php" id="report1" >MCA</a>
                         </div>
                         <div id="attendance-msc">
-                            <h3 style="margin-left: 10px;">DEPARTMENT OF BSc CS </h3><br><br>
-                            <a href="#msc-attendancereport" id="report1">BSc CS</a>
+                            <h3 style="margin-left: 10px;">DEPARTMENT OF CS </h3><br><br>
+                            <a href="bsc-csclass.php" id="report1">CS</a>
                         </div>
                         <div id="attendance-bba">
                             <h3 style="margin-left: 10px;">DEPARTMENT OF BBA</h3><br><br>
-                            <a href="#bba-attendancereport" id="report1">BBA</a>
+                            <a href="bbaclass.php" id="report1">BBA</a>
                         </div>
                         <div id="attendance-bcom">
                             <h3 style="margin-left: 10px;">DEPARTMENT OF BCOM</h3><br><br>
-                            <a href="#bcom-attendancereport" id="report1">BCOM</a>
+                            <a href="bcomclass.php" id="report1">BCOM</a>
                         </div>
                         <div id="attendance-che">
                             <h3 style="margin-left: 4px;">DEP OF CHEMISTRY</h3><br><br>
-                            <a href="#che-attendancereport" id="report1">CHEMISTRY</a>
+                            <a href="chemclass.php" id="report1">CHEMISTRY</a>
                         </div>
 
 
@@ -1573,6 +1925,7 @@ display:inline-block;
 									<td style="font-weight:bold">:</td>
 									<td style="text-align:left;">------------------------------------</td>
 								</tr>
+                                
 								<tr>
 									<td style="font-weight:bold; text-align:center; width:200px;" class="lf">EMAIL</td>
 									<td style="font-weight:bold">:</td>
@@ -1580,6 +1933,11 @@ display:inline-block;
 								</tr>
 								<tr>
 									<td style="font-weight:bold; text-align:center; width:200px;" class="lf">GENDER</td>
+									<td style="font-weight:bold">:</td>
+									<td style="text-align:left;">------------------------------------</td>
+								</tr>
+                                <tr>
+									<td style="font-weight:bold; text-align:center; width:200px;" class="lf">DEPARTMENT</td>
 									<td style="font-weight:bold">:</td>
 									<td style="text-align:left;">------------------------------------</td>
 								</tr>
@@ -1602,13 +1960,13 @@ display:inline-block;
 
                 <div id="rigestration">
                     <div id="rigestration2">
-                        <h4 style="margin-left: 20px;">Registration Form</h4>
+                        <h4 style="margin-left: 20px;">Registration Form </h4>
                         </div>
                     <div id="rigestration1">
                     <p id="d1"></p>
 
                         <div class="signup-container">
-                                <h2>Registration</h2>
+                                <h2>Registration<img src="rgicon.png" alt="" class="rgicon"></h2>
                                 <form class="signup-form"  onsubmit="insertForm()"  action="registerprocess.php" method="post">
                                 <!-- <input type="text" id="getid" placeholder="Please Tag Your card" name="n2"required> -->
                                    <textarea name="n2" id="getuid" class="getid" placeholder="Please Tag Your Card" required></textarea>
@@ -1622,9 +1980,19 @@ display:inline-block;
                                             <option value="female">Female</option>
                                            
                                         </select>
+                                        <select id="dep" name="department">
+                                            <option value="bca">BCA</option>
+                                            <option value="mca">MCA</option>
+                                            <option value="bba">BBA</option>
+                                            <option value="cs">CS</option>
+                                            <option value="bcom">BCOM</option>
+                                            <option value="chem">CHEMISTRY</option>
+                                            
+                                           
+                                        </select><br><br>
                                         
-                                        <button type="reset" name="r1" class="reg-reset">Reset</button><br><br>
-                                    <button type="submit" name="b1" class="reg-submit" id="handle">Submit</button>
+                                        <button type="reset" name="r1" class="reg-reset">Reset</button>
+                                    <button type="submit" name="b1" class="reg-submit" id="handle">Register Now</button>
                                 </form>
 
                         </div>
@@ -1642,15 +2010,15 @@ display:inline-block;
   			  
                        
                          <div class="find-student-detail" id="find-student-detail"><br>
-                         <h1 style="color:#071952;"> <img src="listattendance.png" class="attmainimg">Student Attendance Report</h1><br>
+                         <h1 style="color:white;"> <img src="listattendance.png" class="attmainimg">Student Attendance Report</h1><br>
 
                          <form method="post" action="attendance-list.php">
-                            <lable style="margin-left:15px;"> Name</lable>
-                            <input type="text" class="find" name="find-n1" placeholder="NAME" required><br>
-                            <lable style="margin-left:15px;">Roll No</lable>
-                            <input type="text" class="find" placeholder="ROLL NO" name="find-n2" required><br><br>
+                            <lable style="margin-left:15px; font-size:20px;"> Name</lable>
+                            <input type="text" class="find1" name="find-n1" placeholder="NAME" required><br><br>
+                            <lable style="margin-left:15px; font-size:20px;">Roll No</lable>
+                            <input type="text" class="find" placeholder="ROLL NO" name="find-n2" required><br><br><br>
                             <button type="reset" class="reset">Reset</button>
-                            <button type="submit" class="button" name="find-s1" id="find-s">Submit</button>
+                            <button type="submit" class="button" name="find-s1" id="find-s">Get Report</button>
 
 
                             </form>   

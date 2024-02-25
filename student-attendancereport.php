@@ -12,10 +12,62 @@
 </head>
     <style>
     body{
-      background-color: #97FEED;
+      background-color: #071952;
     }
-    
+    #bca-attendancereport{
+      background-color: white;
+      margin:10px;
+      border-radius:10px;
+    }
          
+    .modal {
+  //display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  //z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  //overflow: auto; /* Enable scroll if needed */
+  background-color: #071952;
+  padding-top: 50px;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  border-radius: 8px;
+  width: 50%; /* Could be more or less, depending on screen size */
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 25px;
+  /* background-color:white;
+  width:100px; */
+ text-align: center;
+  font-weight: bold;
+  color: #071952;
+  border-radius:10px;
+}
+#cimg{
+        width:47px;
+        height:47px;
+        border-radius:25px;
+        margin-left:-20px;
+        position: absolute;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
  .period1,.period2,.period3,.period4,.period5{
  color:white;
  font-size:18px;
@@ -42,14 +94,16 @@
         margin: 12px;
         border-radius: 8px;
         overflow: scroll;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
 
       }
             /*-----------------------attendance-table--------------*/
       .bca2 table{
         border-collapse: collapse;
         background-color: white;
-        margin: 15px;
-      	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        margin: 10px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
       }
       .bca2 th{
         font-weight: bolder;
@@ -62,22 +116,6 @@
         text-align: left;
         padding: 20px;
       }
-       .bca-back-button{
- position:absolute;
- margin-left:80%;
- margin-top:-50px;
- padding:8px 30px;
- background-color:#071952;
- color:white;
- text-decoration:none;
- border-radius:10px;
- 
- }
- .bca-back-button:hover,.bca-back-button:focus{
- box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
- background-color:white;
- color:#071952;
- }
       
   </style>
   </head>
@@ -85,7 +123,7 @@
   <div id="bca-attendancereport">
                     <div class="bca1">
                         <h4>My Attendance</h4>
-                       <a class="bca-back-button" href="student.php#attendance">back</a>
+                        <a href="student.php#attendance"> <span class="close" title="Close Modal"><img  id="cimg" src="cancal.jpg"></span></a>
                     </div>
   <div class="bca2" id="bbca">
                 <table id="table1">

@@ -156,6 +156,8 @@
                 </div>
                 <div class="pass-img">
                     <img src="pass1.png">
+            <img src="loginicon.jpg">
+
                 </div>
 
             </div>
@@ -163,6 +165,7 @@
             <input type="text" placeholder="User Name" name="user" required><br><br>
             <input type="password" placeholder="Password" name="pass" id="password" required><br><br>
             <!-- <img src="eye-close.avif" id="eyeclose"> -->
+
             <button type="submit" name="b1">LogIn</button>
         </form>
             </div>

@@ -1,14 +1,60 @@
 <?php
-include 'dbconnection.php';
- if(isset($_POST['d1'])){
-   $id = $_GET['id'];
-   $delete = mysqli_query($connec,"DELETE FROM `student` WHERE `id`= '$id'");
- }
- if($delete == TRUE)
- {
-   header('Location:bca-report.php');
- }
+// include 'dbconnection.php';
+//  if(isset($_POST['d1'])){
+//   //  $id = $_GET['id'];
+//    $dep =$_GET['department'];
+//    echo $dep;
+//    if($dep == 'bba'){
+//    $id = $_GET['id'];
+//    $delete = mysqli_query($connec,"DELETE FROM `studentbba` WHERE `id`= '$id'");
+//    if($delete == TRUE)
+//    {
+//      header('Location:bbareport-a.php');
+//    }
+//    }
+//    elseif($dep == 'bca'){
+//    $id = $_GET['id'];
+
+//    $delete = mysqli_query($connec,"DELETE FROM `student` WHERE `id`= '$id'");
+//    if($delete == TRUE)
+//    {
+//      header('Location:bca-report.php');
+//    }
+
+//    }
+
+// }
 ?>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+include 'dbconnection.php';
+
+if(isset($_POST['d1'])){
+    $dep = $_GET['dep'];
+    echo $dep;
+
+    if($dep == 'bba'){
+        $id = $_GET['id'];
+        $delete = mysqli_query($connec, "DELETE FROM `studentbba` WHERE `id`= '$id'");
+
+        if($delete == TRUE) {
+            header('Location: bbareport-a.php');
+            exit; // Add exit to prevent further script execution
+        }
+    } elseif($dep == 'bca'){
+        $id = $_GET['id'];
+        $delete = mysqli_query($connec, "DELETE FROM `student` WHERE `id`= '$id'");
+
+        if($delete == TRUE) {
+            header('Location: bca-report.php');
+            exit; // Add exit to prevent further script execution
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +67,18 @@ include 'dbconnection.php';
 .delete:hover {
   opacity:1;
 }
+#id01{
+ background-color: white;
+ margin:20px 40px;
+ width:95%;
+ background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(imgaj2.jpg);
+ background-size:cover;   
+ height:85vh;
+  }
+body{
+ background-color: #071952;
 
+}
 
 .cancelbtn, .deletebtn {
  background-color: #04AA6D;
@@ -78,11 +135,11 @@ include 'dbconnection.php';
 }
 
 .modal-content {
-  background-color: white;
+  /* background-color: white; */
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   border-radius: 8px;
-  width: 50%; /* Could be more or less, depending on screen size */
+  width: 52%; /* Could be more or less, depending on screen size */
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
@@ -108,7 +165,9 @@ hr {
         width:47px;
         height:47px;
         border-radius:25px;
-        /* margin-left:10px; */
+        margin-left:1px;
+        margin-top:-30px;
+        position: absolute;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
 
@@ -138,8 +197,8 @@ hr {
      <a href="bca-report.php"> <span class="close" title="Close Modal"><img  id="cimg" src="cancal.jpg"></span></a>
           <div class="modal-content">
             <div class="container">
-            <h1>Delete Account</h1>
-            <p>Are you sure you want to delete your account?</p><br> 
+            <h1 style="color:white;">Delete Account</h1>
+            <p style="color:white;">Are you sure you want to delete your account?</p><br> 
               <div class="clearfix">
               <form  method="post" onsubmit="submitForm()">
 	       <a href="bca-report.php" type="button"  class="cancelbtn" name="cancle">Cancel</a>

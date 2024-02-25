@@ -1,6 +1,14 @@
 <?php session_start();
 include 'dbconnection.php';
-
+  error_reporting(0);
+  $fn = $_GET['fn'];
+  $ri = $_GET['ri'];
+  $rn = $_GET['rn'];
+  $em = $_GET['em'];
+  $ps = $_GET['ps'];
+  $gn = $_GET['gn'];
+  $dep = $_GET['dep'];
+  
 if(isset($_POST['upb1'])) {
     $name = $_POST['name'];
     $id = $_POST['id'];
@@ -8,7 +16,9 @@ if(isset($_POST['upb1'])) {
     $email = $_POST['email'];
     $password = $_POST['pass'];
     $gender = $_POST['gender1'];
+  // $dep = $_GET['dep'];
 
+  if($dep == 'bca'){ 
     // Update query with prepared statement
     $update = "UPDATE student SET
             name = '$name',
@@ -27,6 +37,27 @@ if(isset($_POST['upb1'])) {
         echo "<script>alert('Record updated error')</script>";
 
     }
+  }
+  elseif($dep == 'bba'){ 
+    // Update query with prepared statement
+    $update = "UPDATE studentbba SET
+            name = '$name',
+            rollno = '$rollno',
+            email = '$email',
+            pass = '$password',
+            gender = '$gender',
+            id = '$id' WHERE rollno='$rollno'";
+
+    $data = mysqli_query($connec,$update);
+
+ if ($data) {
+        echo "<script>alert('Record updated successfully')</script>";
+        header('Location:bbareport-a.php');
+    } else {
+        echo "<script>alert('Record updated error')</script>";
+
+    }
+  }
 
 }
 
@@ -34,14 +65,15 @@ $connec->close();
 ?>
 
 <?php
-  include 'dbconnection.php';
-  error_reporting(0);
-  $fn = $_GET['fn'];
-  $ri = $_GET['ri'];
-  $rn = $_GET['rn'];
-  $em = $_GET['em'];
-  $ps = $_GET['ps'];
-  $gn = $_GET['gn'];
+  // include 'dbconnection.php';
+  // error_reporting(0);
+  // $fn = $_GET['fn'];
+  // $ri = $_GET['ri'];
+  // $rn = $_GET['rn'];
+  // $em = $_GET['em'];
+  // $ps = $_GET['ps'];
+  // $gn = $_GET['gn'];
+  // $dep = $_GET['dep'];
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +84,19 @@ $connec->close();
     <title>a-Dashboard</title>
 <style>
   /*------------------------------attendance delete button------------------------------*/
+  body{
+ background-color: #071952;
+
+  }
+  #id02{
+ background-color: white;
+ margin:20px 40px;
+ width:95%;
+ background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(imgaj2.jpg);
+  
+        background-size:cover;   
+ height:85vh;
+  }
 .delete:hover {
   opacity:1;
 }
@@ -89,6 +134,10 @@ $connec->close();
 .container {
   padding: 16px;
   text-align: center;
+  margin-top:-25px;
+  margin-left:35px;
+  /* opacity:0.7; */
+  
 }
 
 /* The Modal (background) */
@@ -106,12 +155,12 @@ $connec->close();
 }
 
 .modal-content {
-  background-color: white;
+  /* background-color: white; */
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   border-radius: 8px;
   width: 50%; /* Could be more or less, depending on screen size */
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 hr {
@@ -137,17 +186,20 @@ hr {
         width:47px;
         height:47px;
         border-radius:25px;
-        /* margin-left:10px; */
+        margin-left:15px;
+        margin-top:-25px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
       #edit-account{
       padding: 10px 0;margin:20px;width:400px; border: none; background-color: #97FEED; cursor: pointer; color: #071952; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       font-weight:bold;
+      transition:0.3s;
       }
       #edit-account:hover{
         box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 background-color:#071952;
 color:white;
+opacity:0.8;
 }
 /* .close:hover,
 .close:focus {
@@ -176,16 +228,16 @@ color:white;
 	<a href="bca-report.php"><span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal"><img  id="cimg" src="cancal.jpg"></span></a>
                  <div class="container">
                       <form class="modal-content" method="post" onsubmit="submitedit()">
-                      <h2>Edit Account</h2>
+                      <h1 style="color:white;">Edit Account</h1>
 
                            <div class="clearfix">
                                <div id="editbtn">
-      				<input type="text" placeholder="Full Name" name="name" value="<?php echo "$fn" ?>" required style="padding: 10px 0;margin:20px; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
-        			<input type="text" placeholder="ID" value="<?php echo "$ri" ?>" name="id" required style="padding: 10px 0;margin:20px; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;"><br>
-      				<input type="text" placeholder="Roll No" value="<?php echo "$rn" ?>" name="rollno" required style="padding: 10px 0;margin:20px; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
-    				<input type="email" placeholder="Email" value="<?php echo "$em" ?>"  name="email" required style="padding: 10px 0;margin:20px; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;"><br>
-   				<input type="password" placeholder="Password" value="<?php echo "$ps" ?>" name="pass" required style="padding: 10px 0;margin:20px; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
-            			<select id="gender" name="gender1" value="<?php echo "$gn" ?>"  style="padding: 10px 0;margin:20px;width:180px; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+      				<input type="text" placeholder="Full Name" name="name" value="<?php echo "$fn" ?>" required style="padding: 10px 0;color:white;border:1px solid black; font-weight:bold;font-size:15px; outline:none; background-color:transparent; margin:20px;box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); ">
+        			<input type="text" placeholder="ID" value="<?php echo "$ri" ?>" name="id" required style="padding: 10px 0;color:white;border:1px solid black; font-weight:bold;font-size:15px; outline:none; background-color:transparent; margin:20px;box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);"><br>
+      				<input type="text" placeholder="Roll No" value="<?php echo "$rn" ?>" name="rollno" required style="padding: 10px 0;color:white;border:1px solid black; font-weight:bold;font-size:15px; outline:none; background-color:transparent; margin:20px;box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);">
+    				<input type="email" placeholder="Email" value="<?php echo "$em" ?>"  name="email" required style="padding: 10px 0;color:white;border:1px solid black; font-weight:bold;font-size:15px; outline:none; background-color:transparent; margin:20px;box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);"><br>
+   				<input type="password" placeholder="Password" value="<?php echo "$ps" ?>" name="pass" required style="padding: 10px 0;color:white;border:1px solid black; font-weight:bold;font-size:15px; outline:none; background-color:transparent; margin:20px;box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);">
+            			<select id="gender" name="gender1" value="<?php echo "$gn" ?>"  style="padding: 10px 0;width:200px; color:white;border:1px solid black; font-weight:bold;font-size:15px; outline:none; background-color:transparent; margin:20px;box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);">
                                   <option value="male">Male</option>
                                   <option value="female">Female</option>
                                   <option value="non-binary">Non-Binary</option>

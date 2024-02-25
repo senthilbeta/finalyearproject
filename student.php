@@ -131,7 +131,8 @@ endif;
           height:40vh;
           margin:20px 20px;
           box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-          
+          background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(rfidd1.jpg);
+             background-size:cover;
         }
         .todaystatus{
           background-color: white;
@@ -139,7 +140,8 @@ endif;
           height:40vh;
           margin:20px 20px;
           box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-          
+          background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(attendance.jpg);
+             background-size:cover;
         }
         .dashboard3{
 
@@ -157,9 +159,11 @@ endif;
             grid-template-columns:1fr 1fr;
             height: 17vh;
             background-color: white;
-            color: #071952;
+            color: white;
             margin: 25px;
             border-radius: 10px;
+            background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(daypresent.webp);
+             background-size:cover;
            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
         .absent{
@@ -167,9 +171,11 @@ endif;
             grid-template-columns:1fr 1fr;
             height: 17vh;
             background-color: white;
-            color: #071952;
+            color: white;
             margin: 25px;
             border-radius: 10px;
+            background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(dayabsent.jpg);
+             background-size:cover;
           box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         }
       
@@ -178,9 +184,11 @@ endif;
             grid-template-columns:1fr 1fr;
             height: 17vh;
             background-color: white;
-            color: #071952;
+            color: white;
             margin: 25px;
             border-radius: 10px;
+            background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(working.jpg);
+             background-size:cover;
 	  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
         }
@@ -188,16 +196,22 @@ endif;
            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
            background-color: #071952;
            color:white;
+           background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(daypresent.webp);
         }
          .absent:hover{
            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
            background-color: #071952;
            color:white;
+           background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(dayabsent.jpg);
         }
          .hours:hover{
            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
            background-color: #071952;
            color:white;
+           background-size:cover;
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(working.jpg);
         }
         /*------------------------********************************-------------------------*/
 
@@ -241,6 +255,8 @@ endif;
            height: 20vh;
            padding: 15px;
            border-radius: 10px;
+           background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(dates.jpg);
+             background-size:cover;
 	   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
         }
@@ -251,6 +267,8 @@ endif;
            height: 20vh;
            padding: 15px;
            border-radius: 10px;
+           background-image:linear-gradient(rgba(30, 47, 85, 0.78),rgba(8, 83, 156, 0.75)),url(dates.jpg);
+             background-size:cover;
        	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
 
@@ -278,6 +296,7 @@ endif;
           position:absolute;
           cursor:pointer;
           border-radius:10px;
+          transition:0.4s;
           box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
         }
        #get-report button:hover{
@@ -306,7 +325,7 @@ endif;
             background-color: white;
             margin: 10px;
             border-radius: 8px;
-            color: #0B666A;
+            
             display: grid;
             grid-template-columns: 1fr 1fr 1fr; 
             box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
@@ -314,9 +333,9 @@ endif;
         }
               #timetable-bca{
            background-color: white;
-           margin: 25px;
-           width:72vw;
-           height: 64vh;
+           /* margin: 25px; */
+           width:76vw;
+           height: 70vh;
            padding: 15px;
              overflow:scroll;
            border-radius: 10px;
@@ -581,6 +600,8 @@ display:inline-block;
 
 #date{
 text-align:center;
+color: white;
+            font-weight:bold;
 }
 
 #timetable2 table{
@@ -588,7 +609,9 @@ text-align:center;
         background-color: white;
         margin: 5px;
         box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-
+        background-image:linear-gradient(rgba(245, 70, 66, 0.75),rgba(8, 83, 156, 0.75)),url(time.webp);
+        background-size:cover;
+        /* opacity:0.9; */
       }
       #timetable2 th{
         font-weight: bolder;
@@ -596,7 +619,7 @@ text-align:center;
         color: #97FEED;
       }
      #timetable2 table td,th{
-        border: 1px solid #071952;
+        border: 2px solid black;
         width: 65vw;
         text-align: left;
         padding: 20px;
@@ -738,43 +761,43 @@ text-align:center;
                     </div>
                     <div class="dashboard2">
                       <div class="tagdetails">
-                        <h3 style="text-align: center; margin:5px; color: #071952;">Rfid Tag Details</h3>
+                        <h3 style="text-align: center; margin:5px; color: white;">Rfid Tag Details</h3>
                         <?php echo "<img id='imgrfid' src='upload/{$img}'>"; ?>
                         <table style="border:0; cellspacing:0;">
                                     <tr>
-                                        <td style="padding:4px; color:#071952;">Rfid No : </td>
-                                        <td style="padding:4px;color:#0B666A; font-weight:bold;"> <?php echo $rfid; ?> </td>
+                                        <td style="padding:4px; color:white;font-weight:bold;;">Rfid No : </td>
+                                        <td style="padding:4px;color:#97FEED; font-weight:bold;"> <?php echo $rfid; ?> </td>
                                         
                                     </tr>
                                     <tr>
-                                    <td style="padding:4px; color:#071952;"> Name : </td>
-                                    <td style="padding:4px;color:#0B666A; font-weight:bold;""> <?php echo $_SESSION['user_name'] ?></td>
+                                    <td style="padding:4px; color:white;font-weight:bold;"> Name : </td>
+                                    <td style="padding:4px;color:#97FEED; font-weight:bold;""> <?php echo $_SESSION['user_name'] ?></td>
 
                                     </tr>
                                     <tr>
-                                    <td style="padding:4px;  color:#071952;">Roll No :</td>
-                                    <td style="padding:4px;color:#0B666A; font-weight:bold;""><?php echo $rollno; ?></td>
+                                    <td style="padding:4px;  color:white;font-weight:bold;">Roll No :</td>
+                                    <td style="padding:4px;color:#97FEED; font-weight:bold;""><?php echo $rollno; ?></td>
 
 
                                     </tr>
                                     <tr>
-                                    <td style="padding:4px; color:#071952;"> Email Id : </td>   
-                                    <td style="padding:4px;color:#0B666A; font-weight:bold;""> <?php echo $_SESSION['user_email'] ?></td>
+                                    <td style="padding:4px; color:white;font-weight:bold;"> Email Id : </td>   
+                                    <td style="padding:4px;color:#97FEED; font-weight:bold;"> <?php echo $_SESSION['user_email'] ?></td>
 
                                    
 
                                     </tr>
                                     <tr>
-                                    <td style="padding:4px; color:#071952;"> Gender : </td>   
-                                    <td style="padding:4px; color:#0B666A; font-weight:bold;""> <?php echo $gender; ?></td>
+                                    <td style="padding:4px;color:white;font-weight:bold;;"> Gender : </td>   
+                                    <td style="padding:4px; color:#97FEED; font-weight:bold;""> <?php echo $gender; ?></td>
 
                                      
                                    
 
                                     </tr>
                                     <tr>
-                                    <td style="padding:4px; color:#071952;"> Password : </td>   
-                                    <td style="padding:4px; color:#0B666A; font-weight:bold;""> <?php echo $pass; ?></td>
+                                    <td style="padding:4px; color:white;font-weight:bold;"> Password : </td>   
+                                    <td style="padding:4px; color:#97FEED; font-weight:bold;""> <?php echo $pass; ?></td>
 
                                      
                                    
@@ -783,7 +806,7 @@ text-align:center;
                                     </table>
                       </div>
                       <div class="todaystatus">
-                        <h3 style="text-align: center;  margin:5px; color: #071952;">Today Attendance Status</h3>
+                        <h3 style="text-align: center;  margin:5px; color: white;">Today Attendance Status</h3>
                         <?php 
                         $date = date("Y-m-d");
                         // echo $date;
@@ -800,54 +823,54 @@ text-align:center;
                         }
                       }
 ?>
-                          <h2 style="float:right;  margin-left:340px; position:absolute; margin-top:30px; color:#071952;"><?php echo date("D" ,strtotime($date)); ?></h2>
-                          <h2 style="float:right; margin-left:340px; margin-top:58px; position:absolute; color:#0B666A; "><?php echo $date; ?></h2>
+                          <h2 style="float:right;  margin-left:340px; position:absolute; margin-top:30px; color:#97FEED; "><?php echo date("D" ,strtotime($date)); ?></h2>
+                          <h2 style="float:right; margin-left:340px; margin-top:58px; position:absolute; color:white; "><?php echo $date; ?></h2>
 
                         <table style="border:0; cellspacing:0;">
                                     <tr>
-                                        <td style="padding:5px; color:#071952; margin:5px; width:160px;">First Hour</td>
-                                        <td>:</td>
-                                        <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period1'] == 'present' ? 'font-size: 20px; color: green;' : 'font-size: 20px; color: red;'); ?>">
-    <?php echo ($_SESSION['user_period1'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: green;"></i>' : '<i class="fa fa-close" style="font-size: 20px; color: red;"></i>') . $_SESSION['user_period1']; ?>
+                                        <td style="padding:5px; color:#97FEED; font-weight:bold;  margin:5px; width:160px;">First Hour</td>
+                                        <td style=" color:white; font-weight:bold; ">:</td>
+                                        <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period1'] == 'present' ? 'font-size: 20px; color: #00ff00;' : 'font-size: 20px; color: red;'); ?>">
+    <?php echo ($_SESSION['user_period1'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: #00ff00;"></i>' : '<i class="fa fa-close" style="font-size: 20px; color: red;"></i>') . $_SESSION['user_period1']; ?>
 </td>
 
                                         
                                     </tr>
                                     
                                     <tr>
-                                    <td style="padding:5px; color:#071952; margin:5px;"> Second Hour  </td>
-                                    <td>:</td>
+                                    <td style="padding:5px;color:#97FEED; font-weight:bold; margin:5px;"> Second Hour  </td>
+                                    <td style=" color:white; font-weight:bold; ">:</td>
 
-                                    <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period2'] == 'present' ? 'font-size: 20px; color: green;' : 'font-size: 20px; color: red;'); ?>">
-    <?php echo ($_SESSION['user_period2'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: green;"></i>' : '<i class="fa fa-close" style="font-size: 25px; color: red;"></i>') . $_SESSION['user_period2']; ?>
+                                    <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period2'] == 'present' ? 'font-size: 20px; font-weight:bold; color:#00ff00;' : 'font-size: 20px; color: red;'); ?>">
+    <?php echo ($_SESSION['user_period2'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: #00ff00;"></i>' : '<i class="fa fa-close" style="font-size: 25px; color: red;"></i>') . $_SESSION['user_period2']; ?>
 </td>
 
                                     </tr>
                                     <tr>
-                                    <td style="padding:5px;  color:#071952; margin:5px;">Third Hour </td>
-                                    <td>:</td>
+                                    <td style="padding:5px;  color:#97FEED; font-weight:bold; margin:5px;">Third Hour </td>
+                                    <td style=" color:white; font-weight:bold; ">:</td>
 
-                                    <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period3'] == 'present' ? 'font-size: 20px; color: green;' : 'font-size: 20px; color: red;'); ?>">
-    <?php echo ($_SESSION['user_period3'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: green;"></i>' : '<i class="fa fa-close" style="font-size: 25px; color: red;"></i>') . $_SESSION['user_period3']; ?>
+                                    <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period3'] == 'present' ? 'font-size: 20px; color: #00ff00; font-weight:bold;'  : 'font-size: 20px; color: red;'); ?>">
+    <?php echo ($_SESSION['user_period3'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: #00ff00;"></i>' : '<i class="fa fa-close" style="font-size: 25px; color: red;"></i>') . $_SESSION['user_period3']; ?>
 </td>
 
                                     </tr>
                                     <tr>
-                                    <td style="padding:5px; color:#071952; margin:5px;"> Fourth Hour  </td>   
-                                    <td>:</td>
+                                    <td style="padding:5px; color:#97FEED; font-weight:bold; margin:5px;"> Fourth Hour  </td>   
+                                    <td style=" color:white; font-weight:bold; ">:</td>
 
-                                    <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period4'] == 'present' ? 'font-size: 20px; color: green;' : 'font-size: 20px; color: red;'); ?>">
-    <?php echo ($_SESSION['user_period4'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: green;"></i>' : '<i class="fa fa-close" style="font-size: 25px; color: red;"></i>') . $_SESSION['user_period4']; ?>
+                                    <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period4'] == 'present' ? 'font-size: 20px; color: #00ff00;' : 'font-size: 20px; color: red;'); ?>">
+    <?php echo ($_SESSION['user_period4'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: #00ff00;"></i>' : '<i class="fa fa-close" style="font-size: 25px; color: red;"></i>') . $_SESSION['user_period4']; ?>
 </td>
                                    
 
                                     </tr>
                                     <tr>
-                                    <td style="padding:5px; color:#071952; margin:5px;"> Fifth Hour  </td>   
-                                    <td>:</td>
+                                    <td style="padding:5px; color:#97FEED; font-weight:bold; margin:5px;"> Fifth Hour  </td>   
+                                    <td style=" color:white; font-weight:bold; ">:</td>
 
-                                    <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period5'] == 'present' ? 'font-size: 20px; color: green;' : 'font-size: 20px; color: red;'); ?>">
-    <?php echo ($_SESSION['user_period5'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: green;"></i>' : '<i class="fa fa-close" style="font-size: 25px; color: red;"></i>') . $_SESSION['user_period5']; ?>
+                                    <td style="padding: 5px; color: #0B666A; font-weight: bold; <?php echo ($_SESSION['user_period5'] == 'present' ? 'font-size: 20px; color: #00ff00;' : 'font-size: 20px; color: red;'); ?>">
+    <?php echo ($_SESSION['user_period5'] == 'present' ? '<i class="fa fa-check-square" style="font-size: 20px; color: #00ff00;"></i>' : '<i class="fa fa-close" style="font-size: 25px; color: red;"></i>') . $_SESSION['user_period5']; ?>
 </td>
 
                                      
@@ -865,6 +888,21 @@ text-align:center;
                             </div>
                             <div class="present2">
                             <h3 style="text-align: center;">DAY PRESENT</h3>
+                            <?php
+                              $sql1 = "SELECT * FROM attendance where name = '{$_SESSION['user_name']}'";
+                              $query1 = mysqli_query($connec, $sql1);
+                        $num1 = mysqli_num_rows($query1);
+                        if($num1 > 0){
+                          $status = array(); // Initialize an empty array to store status values
+                        while($result1=mysqli_fetch_assoc($query1)){
+                          $status[] =$result1['status'];
+                        }
+                        // var_dump($status);
+                        // print_r($status);
+                        $dayPresent = array_sum($status);
+                       echo "<h1 style='margin-left:50px; margin-top:20px;'>".$dayPresent."</h1>";
+                      }
+                            ?>
                             </div>
                            </div>
                            <div class="absent">
@@ -873,7 +911,10 @@ text-align:center;
                             </div>  
                             <div class="absent2">
                             <h3 style="text-align: center;">DAY ABSENT</h3>
-
+                            <?php
+                            $dayAbsent = $num1 - $dayPresent;
+                       echo "<h1 style='margin-left:50px; margin-top:20px;'>".$dayAbsent."</h1>";
+                            ?>
                             </div>
                            </div>
                            <div class="hours">
@@ -903,11 +944,11 @@ text-align:center;
                             
                             	
 				            <div id="date1">
-                            		<h2>Select Start Date</h2><br>
+                            		<h2 style="color:white;">Select Start Date</h2><br>
                             		<input type="date" style="background-color:#071952; color:white; padding:13px 28px; border:none; outline:none; box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;" name="start_date" required />
                         	</div>
                         	<div id="date2">
-                            		<h2>Select End Date</h2><br>
+                            		<h2 style="color:white;">Select End Date</h2><br>
                             		<input type="date" style="background-color:#071952; color:white; padding:13px 28px; border:none; outline:none; box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;" name="end_date" required/>
                         	</div>
                         	<div id="get-report">

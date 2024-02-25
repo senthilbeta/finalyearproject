@@ -154,6 +154,8 @@
                 </div>
                 <div class="pass-img">
                     <img src="pass1.png">
+            <img src="loginicon.jpg">
+
                 </div>
 
             </div>
