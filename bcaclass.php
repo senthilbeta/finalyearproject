@@ -239,13 +239,13 @@ hr {
  </div>
 
  <script>
-    function submitedit() {
-      // Perform form submission logic here
+    // function submitedit() {
+    //   // Perform form submission logic here
 
-      // Set a success flag in local storage
-      localStorage.setItem('editdata', 'true');
+    //   // Set a success flag in local storage
+    //   localStorage.setItem('editdata', 'true');
      
-    }
+    // }
   </script>
 
 </body>

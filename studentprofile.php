@@ -101,12 +101,12 @@ margin:left;
 }
  .image-uplode{
  background-color:white;
- height:360px;
+ height:480px;
  margin:20px;
  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
  border-radius:15px;
  display:grid;
- grid-template-rows:1fr 1fr;
+ grid-template-rows:1fr 2fr;
  }
  .img-st{
  	height:180px;
@@ -141,7 +141,8 @@ margin:left;
  border:none;
  font-size:18px;
  cursor:pointer;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
  }
  #upload:hover{
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
@@ -185,7 +186,8 @@ margin:left;
         position:absolute;
         margin-left:700px;
         margin-top:30px;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
       }
       .edit:hover{
         background-color: white;
@@ -198,6 +200,31 @@ margin:left;
         margin-left:38px;
         margin-top:38px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      #edit{
+        padding:8px 60px;
+ margin-left:10px;
+ margin-top:15px;
+ /* width:380px; */
+  background-color:red;
+  text-decoration:none;
+ color:white;
+ border-radius:10px;
+ border:none;
+ font-size:18px;
+ cursor:pointer;
+ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+ 
+      }
+      .atedit0{
+        display:grid;
+	grid-template-columns:1fr 1fr;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+      }
+      .atedit1{
+        margin-top:50px;
+        
       }
    </style>
  </head>
@@ -227,18 +254,39 @@ margin:left;
 
 			?>
 			<div class="image-uplode">
+        <!-- <div class="p1"> -->
 				<div class="img-st">
 				<?php
 				echo "<img id='stimg' src='upload/{$im}'>";	
 				?>
 				</div>
-				<div class="img-select"><br>
+				<div class="img-select">
 				<form method="post" enctype="multipart/form-data">
 				   <lable>choose Image</lable><br>
 				   <input type="file" name="my_image" id="button"><br>
 				   <button type="submit" name="submit" id="upload">Upload</button>
-				</form>
+				</form><br>
+        <div class="atedit0">
+        <div class="atedit">
+        <h3 style="text-align:center; color:#071952;">Edit Attendance</h3>
+        <?php 
+         $date = date("Y-m-d");
+          echo "<h4 style='text-align:center;'>$date</h4>";
+        ?>
+        <?php echo "<h4 style='text-align:center;'>$fn</h4>"; ?>
+
+      </div>
+    <div class="atedit1">
+    <a href="attendanceeditprocess.php?fn=<?php echo $fn; ?> &rn=<?php echo $rn;?>" id="edit">Edit</a>
+
+
+    </div>
+    </div>
 				</div>
+    <!-- </div> -->
+    <!-- <div class="p2"> -->
+   
+    <!-- </div> -->
 				
 				<?php echo $message; ?>
 			</div>
